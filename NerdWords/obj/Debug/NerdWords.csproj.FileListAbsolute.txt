@@ -1,0 +1,12 @@
+/Users/admin/Desktop/ICS/ICS4MP2/NerdWords/NerdWords/bin/Debug/NerdWords.exe
+/Users/admin/Desktop/ICS/ICS4MP2/NerdWords/NerdWords/bin/Debug/NerdWords.pdb
+/Users/admin/Desktop/ICS/ICS4MP2/NerdWords/NerdWords/obj/Debug/NerdWords.csproj.AssemblyReference.cache
+/Users/admin/Desktop/ICS/ICS4MP2/NerdWords/NerdWords/obj/Debug/NerdWords.csproj.CoreCompileInputs.cache
+/Users/admin/Desktop/ICS/ICS4MP2/NerdWords/NerdWords/obj/Debug/NerdWords.exe
+/Users/admin/Desktop/ICS/ICS4MP2/NerdWords/NerdWords/obj/Debug/NerdWords.pdb
+/Users/benpetlach/Desktop/School/ICS4/Assignments/Portfolio/PetlachB_MP2/NerdWords/bin/Debug/NerdWords.exe
+/Users/benpetlach/Desktop/School/ICS4/Assignments/Portfolio/PetlachB_MP2/NerdWords/bin/Debug/NerdWords.pdb
+/Users/benpetlach/Desktop/School/ICS4/Assignments/Portfolio/PetlachB_MP2/NerdWords/obj/Debug/NerdWords.csproj.AssemblyReference.cache
+/Users/benpetlach/Desktop/School/ICS4/Assignments/Portfolio/PetlachB_MP2/NerdWords/obj/Debug/NerdWords.csproj.CoreCompileInputs.cache
+/Users/benpetlach/Desktop/School/ICS4/Assignments/Portfolio/PetlachB_MP2/NerdWords/obj/Debug/NerdWords.exe
+/Users/benpetlach/Desktop/School/ICS4/Assignments/Portfolio/PetlachB_MP2/NerdWords/obj/Debug/NerdWords.pdb
