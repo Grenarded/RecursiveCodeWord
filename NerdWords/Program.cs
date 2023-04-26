@@ -1,4 +1,10 @@
-﻿using System;
+﻿//Author: Ben Petlach
+//File Name: Program.cs
+//Project Name: PetlachB_MP2
+//Creation Date: Apr. 24, 2023
+//Modified Date: Apr. 26, 2023
+//Description: Read a file and output whether or not a given string is a Nerd word based off of given rules
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +28,7 @@ namespace NerdWords
 
             Console.Write("Enter a file name to test: ");
             inFile = File.OpenText(Console.ReadLine());
-            outFile = File.CreateText("Petlach_B.txt"); //TODO: Replace the outFile file name
+            outFile = File.CreateText("Petlach_B.txt");
 
             //Reset and start the timer
             stopWatch.Reset();
@@ -64,21 +70,24 @@ namespace NerdWords
 
         public static bool NerdWord(string code)
         {
-            if (CodeWord(code))
+            if (code.Length > 0)
             {
-                return true;
-            }
-
-            int yIdx = code.LastIndexOf("Y"); //TODO: try first index of
-
-            while(yIdx > 0)
-            {
-                if (CodeWord(code.Substring(0, yIdx)) && NerdWord(code.Substring(yIdx + 1)))
+                if (CodeWord(code))
                 {
                     return true;
                 }
 
-                yIdx = code.LastIndexOf("Y", yIdx - 1);
+                int yIdx = code.LastIndexOf("Y"); //TODO: try first index of
+
+                while (yIdx > 0 && yIdx < code.Length - 1)
+                {
+                    if (CodeWord(code.Substring(0, yIdx)) && NerdWord(code.Substring(yIdx + 1)))
+                    {
+                        return true;
+                    }
+
+                    yIdx = code.LastIndexOf("Y", yIdx - 1);
+                }
             }
 
             return false;
@@ -86,8 +95,7 @@ namespace NerdWords
 
         public static bool CodeWord(string code)
         {
-            //if (code[0] == 'A' && code[code.Length - 1] == 'B')
-            if (code.StartsWith("A") && code.EndsWith("B"))
+            if (code[0] == 'A' && code[code.Length - 1] == 'B')
             {
                 return NerdWord(code.Substring(1, code.Length - 2));
             }
