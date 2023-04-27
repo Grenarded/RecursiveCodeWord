@@ -79,22 +79,7 @@ namespace NerdWords
 
                 for (int yIdx = word.IndexOf("Y"); yIdx > 0 && yIdx < word.Length - 1; yIdx = word.IndexOf("Y", yIdx + 1))
                 {
-                    //if (IsCodeWord(word.Substring(0, yIdx)) && IsNerdWord(word.Substring(yIdx + 1)))
-                    //{
-                    //    return true;
-                    //}
-
-                    bool leftIsCodeWord = true;
-                    for (int i = 0; i < yIdx; i++)
-                    {
-                        if (!IsCodeWord(word[i].ToString()))
-                        {
-                            leftIsCodeWord = false;
-                            break;
-                        }
-                    }
-
-                    if (leftIsCodeWord && IsNerdWord(word.Substring(yIdx + 1)))
+                    if (IsCodeWord(word.Substring(0, yIdx)) && IsNerdWord(word.Substring(yIdx + 1)))
                     {
                         return true;
                     }
