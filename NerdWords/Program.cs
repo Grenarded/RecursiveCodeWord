@@ -79,7 +79,6 @@ namespace NerdWords
 
                 for (int yIdx = word.IndexOf("Y"); yIdx > 0 && yIdx < endInd; yIdx = word.IndexOf("Y", yIdx + 1))
                 {
-                    //if (IsCodeWord(word.Substring(0, yIdx)) && IsNerdWord(word.Substring(yIdx + 1)))
                     if (IsCodeWord(word, startInd, yIdx - 1) && IsNerdWord(word, yIdx + 1, endInd))
                     {
                         return true;
@@ -95,10 +94,10 @@ namespace NerdWords
             if (word[startInd] == 'A' && word[endInd] == 'B')
             {
                 //return IsNerdWord(word.Substring(1, word.Length - 2));
-                return IsNerdWord(word, 1, endInd - 1);
+                return IsNerdWord(word, startInd + 1, endInd - 1);
             }
 
-            return word.Equals("X");
+            return startInd == endInd && word[startInd] == 'X';//word.Equals("X");
         }
 
         //public static bool IsNerdWord(string word)
