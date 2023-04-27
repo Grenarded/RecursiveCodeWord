@@ -40,7 +40,7 @@ namespace NerdWords
                 cheatCode = inFile.ReadLine();
 
                 //Insert your code here to validate cheatCode and write the results to the file
-                if (IsNerdWord(cheatCode))
+                if (IsNerdWord(cheatCode, 0, cheatCode.Length - 1))
                 {
                     outFile.WriteLine(cheatCode + ":YES");
                     validCount++;
@@ -68,35 +68,68 @@ namespace NerdWords
             return "Time- Days:Hours:Minutes:Seconds.Milliseconds:" + ts.Days + ":" + ts.Hours + ":" + ts.Minutes + ":" + ts.Seconds + "." + ts.Milliseconds;
         }
 
-        public static bool IsNerdWord(string word)
+        public static bool IsNerdWord(string word, int startInd, int endInd)
         {
             if (word.Length > 0)
             {
-                if (IsCodeWord(word))
+                if (IsCodeWord(word, startInd, endInd))
                 {
                     return true;
                 }
 
-                for (int yIdx = word.IndexOf("Y"); yIdx > 0 && yIdx < word.Length - 1; yIdx = word.IndexOf("Y", yIdx + 1))
+                for (int yIdx = word.IndexOf("Y"); yIdx > 0 && yIdx < endInd; yIdx = word.IndexOf("Y", yIdx + 1))
                 {
-                    if (IsCodeWord(word.Substring(0, yIdx)) && IsNerdWord(word.Substring(yIdx + 1)))
+                    //if (IsCodeWord(word.Substring(0, yIdx)) && IsNerdWord(word.Substring(yIdx + 1)))
+                    if (IsCodeWord(word, startInd, yIdx) && IsNerdWord(word, yIdx + 1, endInd))
                     {
                         return true;
                     }
                 }
             }
 
-           return false;
+            return false;
         }
 
-        public static bool IsCodeWord(string word)
+        public static bool IsCodeWord(string word, int startInd, int endInd)
         {
             if (word[0] == 'A' && word[word.Length - 1] == 'B')
             {
-                return IsNerdWord(word.Substring(1, word.Length - 2));
+                //return IsNerdWord(word.Substring(1, word.Length - 2));
+                return IsNerdWord(word, 1, endInd - 1);
             }
 
             return word.Equals("X");
         }
+
+        //public static bool IsNerdWord(string word)
+        //{
+        //    if (word.Length > 0)
+        //    {
+        //        if (IsCodeWord(word))
+        //        {
+        //            return true;
+        //        }
+
+        //        for (int yIdx = word.IndexOf("Y"); yIdx > 0 && yIdx < word.Length - 1; yIdx = word.IndexOf("Y", yIdx + 1))
+        //        {
+        //            if (IsCodeWord(word.Substring(0, yIdx)) && IsNerdWord(word.Substring(yIdx + 1)))
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //    }
+
+        //   return false;
+        //}
+
+        //public static bool IsCodeWord(string word)
+        //{
+        //    if (word[0] == 'A' && word[word.Length - 1] == 'B')
+        //    {
+        //        return IsNerdWord(word.Substring(1, word.Length - 2));
+        //    }
+
+        //    return word.Equals("X");
+        //}
     }
 }
