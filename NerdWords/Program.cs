@@ -40,7 +40,7 @@ namespace NerdWords
                 cheatCode = inFile.ReadLine();
 
                 //Insert your code here to validate cheatCode and write the results to the file
-                if (NerdWord(cheatCode))
+                if (IsNerdWord(cheatCode))
                 {
                     outFile.WriteLine(cheatCode + ":YES");
                     validCount++;
@@ -68,39 +68,50 @@ namespace NerdWords
             return "Time- Days:Hours:Minutes:Seconds.Milliseconds:" + ts.Days + ":" + ts.Hours + ":" + ts.Minutes + ":" + ts.Seconds + "." + ts.Milliseconds;
         }
 
-        public static bool NerdWord(string code)
+        public static bool IsNerdWord(string word)
         {
-            if (code.Length > 0)
+            if (word.Length > 0)
             {
-                if (CodeWord(code))
+                if (IsCodeWord(word))
                 {
                     return true;
                 }
 
-                int yIdx = code.LastIndexOf("Y"); //TODO: try first index of
-
-                while (yIdx > 0 && yIdx < code.Length - 1)
+                for (int yIdx = word.IndexOf("Y"); yIdx > 0 && yIdx < word.Length - 1; yIdx = word.IndexOf("Y", yIdx + 1))
                 {
-                    if (CodeWord(code.Substring(0, yIdx)) && NerdWord(code.Substring(yIdx + 1)))
+                    //if (IsCodeWord(word.Substring(0, yIdx)) && IsNerdWord(word.Substring(yIdx + 1)))
+                    //{
+                    //    return true;
+                    //}
+
+                    bool leftIsCodeWord = true;
+                    for (int i = 0; i < yIdx; i++)
+                    {
+                        if (!IsCodeWord(word[i].ToString()))
+                        {
+                            leftIsCodeWord = false;
+                            break;
+                        }
+                    }
+
+                    if (leftIsCodeWord && IsNerdWord(word.Substring(yIdx + 1)))
                     {
                         return true;
                     }
-
-                    yIdx = code.LastIndexOf("Y", yIdx - 1);
                 }
             }
 
-            return false;
+           return false;
         }
 
-        public static bool CodeWord(string code)
+        public static bool IsCodeWord(string word)
         {
-            if (code[0] == 'A' && code[code.Length - 1] == 'B')
+            if (word[0] == 'A' && word[word.Length - 1] == 'B')
             {
-                return NerdWord(code.Substring(1, code.Length - 2));
+                return IsNerdWord(word.Substring(1, word.Length - 2));
             }
 
-            return code.Equals("X");
+            return word.Equals("X");
         }
     }
 }
