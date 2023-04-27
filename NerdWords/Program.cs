@@ -93,42 +93,10 @@ namespace NerdWords
         {
             if (word[startInd] == 'A' && word[endInd] == 'B')
             {
-                //return IsNerdWord(word.Substring(1, word.Length - 2));
                 return IsNerdWord(word, startInd + 1, endInd - 1);
             }
 
-            return startInd == endInd && word[startInd] == 'X';//word.Equals("X");
+            return startInd == endInd && word[startInd] == 'X';
         }
-
-        //public static bool IsNerdWord(string word)
-        //{
-        //    if (word.Length > 0)
-        //    {
-        //        if (IsCodeWord(word))
-        //        {
-        //            return true;
-        //        }
-
-        //        for (int yIdx = word.IndexOf("Y"); yIdx > 0 && yIdx < word.Length - 1; yIdx = word.IndexOf("Y", yIdx + 1))
-        //        {
-        //            if (IsCodeWord(word.Substring(0, yIdx)) && IsNerdWord(word.Substring(yIdx + 1)))
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    }
-
-        //   return false;
-        //}
-
-        //public static bool IsCodeWord(string word)
-        //{
-        //    if (word[0] == 'A' && word[word.Length - 1] == 'B')
-        //    {
-        //        return IsNerdWord(word.Substring(1, word.Length - 2));
-        //    }
-
-        //    return word.Equals("X");
-        //}
     }
 }
